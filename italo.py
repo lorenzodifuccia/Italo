@@ -55,7 +55,7 @@ class TrainManager:
         login_response = self.session.post("https://big.ntvspa.it/BIG/v7/Rest/SessionManager.svc/Login",
                                            json={"Login": {
                                                "Username": "WWW_Anonymous", "Password": "Accenture$1", "Domain": "WWW",
-                                               "VersionNumber": "3.0.6"
+                                               "VersionNumber": "10.0.1"
                                            }, "SourceSystem": 2})
 
         try:
@@ -383,7 +383,7 @@ def convert_departure_timestamp(time_str):
     datetime_obj = datetime.datetime.combine(datetime.date.today(), datetime.time.fromisoformat(time_str))
     interval_start_unix = int((datetime_obj - datetime.timedelta(minutes=30)).timestamp()) * 1000
     interval_end_unix = int((datetime_obj + datetime.timedelta(hours=2)).timestamp()) * 1000
-    return "/Date(%s)/" % interval_start_unix, "/Date(%s)/" % interval_end_unix
+    return "/Date(%s+0000)/" % interval_start_unix, "/Date(%s+0000)/" % interval_end_unix
 
 
 if __name__ == "__main__":
