@@ -381,9 +381,9 @@ class TrainManager:
 
 def convert_departure_timestamp(time_str):
     datetime_obj = datetime.datetime.combine(datetime.date.today(), datetime.time.fromisoformat(time_str))
-    interval_start_unix = int((datetime_obj - datetime.timedelta(minutes=30)).timestamp()) * 1000
+    interval_start_unix = int((datetime_obj - datetime.timedelta(hours=1)).timestamp()) * 1000
     interval_end_unix = int((datetime_obj + datetime.timedelta(hours=2)).timestamp()) * 1000
-    return "/Date(%s+0000)/" % interval_start_unix, "/Date(%s+0000)/" % interval_end_unix
+    return "/Date(%s)/" % interval_start_unix, "/Date(%s)/" % interval_end_unix
 
 
 if __name__ == "__main__":
